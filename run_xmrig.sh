@@ -12,4 +12,4 @@ fi
 
 PASSWORD=${PASSWORD:-x}
 THREADS=${THREADS:-1}
-./xmrig -o $URL -u $WALLET_ADDRESS -p $PASSWORD -t $THREADS --donate-level=1 --no-color
+./xmrig -o $URL -u $WALLET_ADDRESS -p $PASSWORD -t $THREADS -v 2 --cpu-priority=0 --donate-level=1 --no-color
