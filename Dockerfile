@@ -1,14 +1,12 @@
 from ubuntu:xenial
 COPY run_xmrig.sh /
-RUN adduser --system --disabled-password --home /miner miner && \
+RUN adduser --system --disabled-password --home /ubuntu ubuntu && \
     apt-get update -y && \
-    apt-get install -y wget libcurl4-openssl-dev && \
-    wget https://github.com/xmrig/xmrig/releases/download/v2.3.1/xmrig-2.3.1-gcc7-xenial-amd64.tar.gz && \
-    tar -xzf xmrig-2.3.1-gcc7-xenial-amd64.tar.gz && \
-    mv xmrig-2.3.1 /miner/app/ && \
-    mv /run_xmrig.sh /miner/app/ && \
-    chmod a+x /miner/app/run_xmrig.sh
-USER miner
-WORKDIR /miner/app
-ENTRYPOINT ["/miner/app/run_xmrig.sh"]
+    apt-get install -y wget libcurl4-openssl-dev libuv1 && \
+    wget https://github.com/leonzdev/xmrig/releases/download/leonzdev_0.0.1/xmrig && \
+    mv /xmrig /app && \
+    chmod a+x /app && \
+    chmod a+x /run_xmrig.sh
+USER ubuntu 
+ENTRYPOINT ["/run_xmrig.sh"]
 
