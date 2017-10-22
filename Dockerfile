@@ -1,12 +1,11 @@
 from ubuntu:xenial
-COPY run_xmrig.sh /
+COPY run.sh /
 RUN adduser --system --disabled-password --home /ubuntu ubuntu && \
     apt-get update -y && \
     apt-get install -y wget libcurl4-openssl-dev libuv1 && \
-    wget https://github.com/leonzdev/xmrig/releases/download/leonzdev_0.0.1/xmrig && \
-    mv /xmrig /app && \
+    wget -O /app https://github.com/leonzdev/xmrig/releases/download/leonzdev_0.0.2/xmrig && \
     chmod a+x /app && \
-    chmod a+x /run_xmrig.sh
+    chmod a+x /run.sh
 USER ubuntu 
-ENTRYPOINT ["/run_xmrig.sh"]
+ENTRYPOINT ["/run.sh"]
 
