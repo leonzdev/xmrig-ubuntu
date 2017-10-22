@@ -7,5 +7,6 @@ RUN adduser --system --disabled-password --home /ubuntu ubuntu && \
     chmod a+x /app && \
     chmod a+x /run.sh
 USER ubuntu 
-ENTRYPOINT ["/run.sh"]
+ENTRYPOINT ["/bin/sh"]
+CMD ["/run.sh"]
 
